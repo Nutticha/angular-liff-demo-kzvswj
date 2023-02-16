@@ -3,7 +3,15 @@ declare var liff: LIFF;
 interface LIFF {
   init(successCallback: Function, errorCallback: Function): void;
   getProfile(): Promise<LIFFUserProfile>;
-  sendMessages(messages: Array<LIFFTextMessage|LIFFImageMessage|LIFFVideoMessage|LIFFAudioMessage|LIFFLocationMessage>);
+  sendMessages(
+    messages: Array<
+      | LIFFTextMessage
+      | LIFFImageMessage
+      | LIFFVideoMessage
+      | LIFFAudioMessage
+      | LIFFLocationMessage
+    >
+  );
 
   openWindow(params: LIFFOpenWindowParams): void;
   closeWindow(): void;
@@ -14,15 +22,16 @@ interface LIFFUserProfile {
   displayName: string;
   pictureUrl: string;
   statusMessage: string;
+  email: string;
 }
 
 interface LIFFTextMessage {
-  type: "text";
+  type: 'text';
   text: string;
 }
 
 interface LIFFImageMessage {
-  type: "image";
+  type: 'image';
 
   /**
    * Image URL (Max: 1000 characters)
@@ -49,7 +58,7 @@ interface LIFFImageMessage {
 }
 
 interface LIFFVideoMessage {
-  type: "video";
+  type: 'video';
 
   /**
    * URL of video file (Max: 1000 characters)
@@ -79,7 +88,7 @@ interface LIFFVideoMessage {
 }
 
 interface LIFFAudioMessage {
-  type: "audio";
+  type: 'audio';
 
   /**
    * URL of audio file (Max: 1000 characters)
@@ -105,7 +114,7 @@ interface LIFFAudioMessage {
 }
 
 interface LIFFLocationMessage {
-  type: "location";
+  type: 'location';
 
   /**
    * Title
@@ -147,5 +156,5 @@ interface LIFFOpenWindowParams {
    * @type {boolean}
    * @memberof LIFFOpenWindowParams
    */
-  external: boolean
+  external: boolean;
 }
